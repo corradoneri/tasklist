@@ -1,21 +1,37 @@
 ﻿using System.Collections.Generic;
-using Tasks.Core.Models;
+using System.Threading.Tasks;
+using TaskList.Core.Models;
 
-namespace Tasks.Core.DataAccess
+namespace TaskList.Core.DataAccess
 {
     public class TaskItemRepository : ITaskItemRepository
     {
-        public void AddTaskItem(TaskItem taskItem)
+        public Task Create(TaskItem taskItem)
         {
             throw new System.NotImplementedException();
         }
 
-        public IEnumerable<TaskItem> GetTaskItems()
+        public Task<IEnumerable<TaskItem>> Get()
         {
             throw new System.NotImplementedException();
         }
 
-        public void UpdateTaskItem(TaskItem taskItem)
+        public Task<TaskItem> Get(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task Remove(TaskItem taskItem)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task Remove(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task Update(TaskItem taskItem)
         {
             throw new System.NotImplementedException();
         }
