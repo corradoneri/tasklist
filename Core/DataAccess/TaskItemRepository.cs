@@ -3,19 +3,19 @@ using Tasks.Core.Models;
 
 namespace Tasks.Core.DataAccess
 {
-    public class TaskRepository : ITaskRepository
+    public class TaskItemRepository : ITaskItemRepository
     {
-        public void AddRecord(Task task)
+        public void AddTaskItem(TaskItem taskItem)
         {
             throw new System.NotImplementedException();
         }
 
-        public IEnumerable<Task> GetTasks()
+        public IEnumerable<TaskItem> GetTaskItems()
         {
             throw new System.NotImplementedException();
         }
 
-        public void UpdateTasks(Task task)
+        public void UpdateTaskItem(TaskItem taskItem)
         {
             throw new System.NotImplementedException();
         }
