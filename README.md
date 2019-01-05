@@ -1,2 +1,2 @@
-# tasks
-Simple tasks management application used for testing technique
+# tasklist
+Simple task management application used for testing technique
