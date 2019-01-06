@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Core\TaskList.Core.csproj" />
+    <ProjectReference Include="..\Infrastructure\TaskList.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

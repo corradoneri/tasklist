@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using MongoDB.Bson;
+using MongoDB.Driver;
 using TaskList.Core.DataAccess;
 using TaskList.Core.Models;
 
@@ -17,7 +19,6 @@ namespace TaskList.TaskApi.Controllers
             _taskItemRepository = taskItemRepository;
         }
 
-        // GET: api/taskitems
         [HttpGet]
         public async Task<IEnumerable<TaskItem>> Get()
         {
@@ -26,7 +27,7 @@ namespace TaskList.TaskApi.Controllers
 
         // GET: api/taskitems/5
         [HttpGet("{id}", Name = "Get")]
-        public async Task<IActionResult> Get(int id)
+        public async Task<IActionResult> Get(string id)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -51,7 +52,7 @@ namespace TaskList.TaskApi.Controllers
 
         // PUT: api/taskitems/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, [FromBody] TaskItem taskItem)
+        public async Task<IActionResult> Put(string id, [FromBody] TaskItem taskItem)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -65,7 +66,7 @@ namespace TaskList.TaskApi.Controllers
 
         // DELETE: api/taskitems/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Delete(string id)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
