@@ -45,7 +45,7 @@ namespace TaskList.Infrastructure.DataAccess
             //
             _client = new MongoClient();
             _db = _client.GetDatabase("tasks");
-            _taskItems = _db.GetCollection<TaskItem>("taskItems");
+            _taskItems = _db.GetCollection<TaskItem>("taskitems");
         }
 
         public async Task Create(TaskItem taskItem)
