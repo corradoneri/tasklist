@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.IdGenerators;
@@ -39,12 +39,11 @@ namespace TaskList.Infrastructure.DataAccess
         private IMongoDatabase _db;
         private IMongoCollection<TaskItem> _taskItems;
 
-        public TaskItemRepository()
+        public TaskItemRepository(IConfiguration configuration)
         {
-            // TODO - Refactor configuration and creation of MongoClient
-            //
-            _client = new MongoClient();
-            _db = _client.GetDatabase("tasks");
+            var settings = configuration.GetSection("MongoConnection").Get<MongoConnectionSettings>();
+            _client = new MongoClient(settings.ConnectionString);
+            _db = _client.GetDatabase(settings.Database);
             _taskItems = _db.GetCollection<TaskItem>("taskitems");
         }
 
