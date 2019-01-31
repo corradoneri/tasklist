@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Security.Authentication;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using MongoDB.Bson;
@@ -41,7 +42,12 @@ namespace TaskList.Infrastructure.DataAccess
 
         public TaskItemRepository(IConfiguration configuration)
         {
-            var settings = configuration.GetSection("MongoConnection").Get<MongoConnectionSettings>();
+            //string connectionString = @"mongodb://taskitems:5PpJEysqK55Qgs24IoyROkUYbGyLZ0foIMpEFqF40EDPM01KKotcI7zpR987x3txWqljj4h1er1OumUNz8BXxg==@taskitems.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
+            //MongoClientSettings settings = MongoClientSettings.FromUrl(new MongoUrl(connectionString));
+            //settings.SslSettings = new SslSettings() { EnabledSslProtocols = SslProtocols.Tls12 };
+            //_client = new MongoClient(settings);
+            //_db = _client.GetDatabase("tasks");
+            var settings = configuration.GetSection("TaskItemsDatabaseConnection").Get<TaskItemsDatabaseConnectionSettings>();
             _client = new MongoClient(settings.ConnectionString);
             _db = _client.GetDatabase(settings.Database);
             _taskItems = _db.GetCollection<TaskItem>("taskitems");
