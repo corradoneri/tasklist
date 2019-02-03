@@ -3,7 +3,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using TaskList.Core.Logging;
 using TaskList.Core.DataAccess;
+using TaskList.Infrastructure.Logging;
 using TaskList.Infrastructure.DataAccess;
 
 namespace TaskList.TaskApi
@@ -21,6 +23,7 @@ namespace TaskList.TaskApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+			services.AddSingleton<ILogger, Logger>();
             services.AddTransient<ITaskItemRepository, TaskItemRepository>();
         }
 
